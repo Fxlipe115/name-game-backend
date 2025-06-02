@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { TeamMateDto } from './dtos/teammate.dto';
 import axios from 'axios';
+import { TeamMate } from './interfaces/teammate.interface';
 
 @Injectable()
 export class TeammatesService {
   private readonly API_URL =
     'https://namegame.willowtreeapps.com/api/v1.0/profiles';
 
-  async getTeammates(): Promise<TeamMateDto[]> {
+  async getTeammates(): Promise<TeamMate[]> {
     try {
       const response = await axios.get<TeamMateDto[]>(this.API_URL);
       return response.data;
